@@ -17,7 +17,7 @@ public class MulticastReceiver implements Runnable {
 		try {
 			//Prepare to join multicast group
 			socket = new MulticastSocket(8888);
-			//address we are joining
+			//address we are joining, multiple people can be on 
 			InetAddress address = InetAddress.getByName("224.2.2.3");
 			//attempt to join, if fail we output why
 			socket.joinGroup(address);
@@ -29,7 +29,7 @@ public class MulticastReceiver implements Runnable {
 				//now create the message from the user inputted message. Use inBuf, get it's length too. 
 				String msg = new String(inBuf, 0, inPacket.getLength());
 				//Now print out what it is: Get the address of the person, then print their message
-				System.out.println("From " + inPacket.getAddress() + " Msg : " +msg);
+				System.out.println("From " +msg);
 			}
 		} catch (IOException ioe) {
 			System.out.println(ioe);
